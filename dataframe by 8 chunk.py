@@ -1,7 +1,7 @@
 import pandas as pd
 import ast
 
-file_name = 'dropout-16'
+file_name = 'compression-64'
 chunk_size = 4
 
 # Read the CSV file
@@ -12,6 +12,7 @@ df = pd.read_csv(csv_path, converters={'bit_flips_index': ast.literal_eval})
 def process_bit_flips_index(bit_flips_index):
     # Divide each value by 8 using integer division (//), convert to set, and calculate the length
     bit_flips_index_8 = set([i // chunk_size for i in bit_flips_index])
+    # bit_flips_index_8 = [i // chunk_size for i in bit_flips_index]
     num_chunk_flips = len(bit_flips_index_8)
     return bit_flips_index_8, num_chunk_flips
 
